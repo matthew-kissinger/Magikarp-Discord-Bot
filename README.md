@@ -4,7 +4,7 @@ Magikarp is an AI-driven Discord bot with a unique twist. Inspired by Marvin the
 
 ## Features
 
-1. **Text Generation**: Utilizing OpenAI's advanced GPT-3 model, Magikarp can generate responses to a wide range of prompts. Whether you're asking a serious question or looking for a humorous conversation, Magikarp has got you covered.
+1. **Text Generation**: Utilizing OpenAI's advanced GPT-3.5 chat model, Magikarp can generate responses to a wide range of prompts. Whether you're asking a serious question or looking for a humorous conversation, Magikarp has got you covered.
 
 2. **Image Generation**: Need a picture of a futuristic city? Or a cartoon version of a cat? Magikarp can generate it for you with OpenAI's Image API.
 
