@@ -1,6 +1,6 @@
 # Magikarp Discord Bot
 
-Magikarp, the most powerful (and quirky) Discord bot you'll ever meet, powered by OpenAI GPT-4!
+Magikarp, the most powerful (and quirky) Discord bot you'll ever meet, powered by OpenAI API and some python magic.
 
 ## Features
 
