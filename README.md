@@ -10,6 +10,8 @@ Magikarp is an AI-driven Discord bot with a unique twist. Inspired by Marvin the
 
 3. **Test Command**: Use the `!test` command to ensure Magikarp is operational.
 
+4. **Stock Analysis**: Get GPT-3.5 chat model to do stock analysis using latest price, historical prices and volumes, and recent news stories to produce a rating and stock chart.
+
 ## How to Use
 
 1. Clone the repository.
@@ -21,6 +23,7 @@ Here are the commands you can use:
 - `!splash [your question]`: Ask a question or initiate a conversation.
 - `!image [your image prompt]`: Generate an image based on the given prompt.
 - `!test`: Confirm the bot's presence and functionality.
+- '!stock' [Ticker Symbol]': Real-time stock analysis and chart creation
 
 Please note, Magikarp is a bit of a pessimist, but always ready to help!
 
