@@ -248,6 +248,9 @@ async def info(ctx):
     embed.add_field(name="!splash {question}", value="Ask a question and the bot will respond in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.", inline=False)
     embed.add_field(name="!image {image_prompt}", value="The bot will generate an image based on the provided prompt.", inline=False)
     embed.add_field(name="!stock {symbol}", value="The bot will fetch and analyze data for the specified stock symbol.", inline=False)
+    embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
+    embed.add_field(name="!compliment {@user}", value="Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.", inline=False)
+    embed.add_field(name="!fortune", value="The bot will tell your fortune in a quirky and fun manner.", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -276,6 +279,59 @@ async def splash(ctx, *, question):
     
     # Send assistant's reply to Discord
     await ctx.send(assistant_reply)
+
+
+@bot.command()
+async def compliment(ctx, *, user: discord.Member = None):
+    if not user:
+        user = ctx.author
+
+    compliment_prompt = f"{user.display_name}"
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a friendly and creative compliment generator. Your goal is to make people feel good about themselves."},
+            {"role": "user", "content": compliment_prompt},
+        ]
+    )
+
+    compliment = response['choices'][0]['message']['content']
+    await ctx.send(compliment)
+
+@bot.command()
+async def insult(ctx, *, user: discord.Member = None):
+    if not user:
+        user = ctx.author
+
+    insult_prompt = f"{user.display_name}"
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are an AI specialized in generating edgy, sarcastic insults that dig deep but avoid crossing the line into being excessively offensive or hurtful."},
+            {"role": "user", "content": insult_prompt},
+        ]
+    )
+
+    insult = response['choices'][0]['message']['content']
+    await ctx.send(insult)
+
+@bot.command()
+async def fortune(ctx):
+    fortune_prompt = "Tell me my fortune."
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are an AI fortune teller capable of generating whimsical, wise, and funny fortunes like the ones found in a fortune cookie."},
+            {"role": "user", "content": fortune_prompt},
+        ]
+    )
+
+    fortune = response['choices'][0]['message']['content']
+    await ctx.send(fortune)
+
 
 @bot.command()
 async def image(ctx, *, image_prompt):
