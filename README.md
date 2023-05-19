@@ -34,3 +34,7 @@ Magikarp was developed using Python and the discord.py library, with natural lan
 ## Contributing
 
 If you'd like to contribute to the project, feel free to open an issue or create a pull request. 
+
+## License
+
+This project is licensed under the terms of the MIT license. See the [LICENSE.md](LICENSE.md) file for details.
