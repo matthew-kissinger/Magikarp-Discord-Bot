@@ -12,6 +12,7 @@ Magikarp has a wide array of functionalities, including:
 - Delivering edgy, sarcastic insults.
 - Producing unique compliments.
 - Telling fortunes in a quirky and fun manner.
+- Making memes.
 
 ## Commands
 
@@ -22,6 +23,7 @@ Magikarp has a wide array of functionalities, including:
 - `!insult {@user}`: Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.
 - `!compliment {@user}`: Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.
 - `!fortune`: The bot will tell your fortune in a quirky and fun manner.
+- `!meme {quote}`: The bot will create a meme with your quote in impact font.
 
 ## Usage
 
