@@ -257,6 +257,7 @@ async def info(ctx):
     embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
     embed.add_field(name="!compliment {@user}", value="Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.", inline=False)
     embed.add_field(name="!fortune", value="The bot will tell your fortune in a quirky and fun manner.", inline=False)
+    embed.add_field(name="!meme {quote}", value="The bot will create a meme of your quote with impact font.", inline=False)
 
     await ctx.send(embed=embed)
 
