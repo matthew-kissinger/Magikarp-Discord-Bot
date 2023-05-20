@@ -364,6 +364,28 @@ async def image(ctx, *, image_prompt):
         await ctx.send(file=picture)
 
 @bot.command()
+async def copypasta(ctx, *, topic: str = None):
+    if not topic:
+        copypasta_prompt = "Return a copypasta"
+    else:
+        copypasta_prompt = f"Return a copypasta about {topic}."
+
+    response = openai.ChatCompletion.create(
+        temperature=1.40,
+        max_tokens=1000,
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful bot that returns random copy pasta. Start the message with the beginning of the copypasta."},
+            {"role": "user", "content": copypasta_prompt},
+        ]
+    )
+
+    copypasta = response['choices'][0]['message']['content']
+    await ctx.send(copypasta)
+
+
+
+@bot.command()
 async def meme(ctx, *, quote):
     print(f'Received meme command with quote: {quote}')
 
