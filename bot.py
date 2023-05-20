@@ -386,11 +386,34 @@ async def meme(ctx, *, quote):
     img = Image.open(filename)
     draw = ImageDraw.Draw(img)
 
-    # Specify font : The font 'impact.ttf' should be in your directory or you can use any other fonts.
-    font = ImageFont.truetype('impact.ttf', size=60)
+    # Get the width and height of the image
+    img_width, img_height = img.size
 
-    # Wrapping the text
-    lines = textwrap.wrap(quote, width=40)  # change the width to your needs
+    # Determine the width of the text block, keeping some margins
+    text_width = img_width * 0.9  # 90% of the image width
+
+    # Initially set the maximum font size
+    font_size = 60
+
+    # Create a loop to progressively decrease the font size until the text fits the image
+    while True:
+        # Create the font object
+        font = ImageFont.truetype('impact.ttf', size=font_size)
+
+        # Estimate the number of characters per line and the number of lines
+        chars_per_line = text_width // font.getsize('A')[0]  # assuming 'A' is representative
+        lines = textwrap.wrap(quote, width=chars_per_line)
+
+        # Check if the text height fits the image
+        text_height = len(lines) * font.getsize('A')[1]  # assuming 'A' is representative
+        if text_height < img_height * 0.9:  # 90% of the image height
+            break
+
+        # If the text doesn't fit, decrease the font size and try again
+        font_size -= 1
+
+    # Now use this `lines` list and `font` object for your text rendering
+
     y_text = 10
     stroke_width = 2  # Define stroke width
     stroke_fill = "black"  # Define stroke color
