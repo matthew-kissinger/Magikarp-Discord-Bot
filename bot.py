@@ -16,6 +16,8 @@ from datetime import datetime
 import feedparser
 from newspaper import Article, ArticleException
 from requests.exceptions import HTTPError
+from PIL import Image, ImageDraw, ImageFont
+import textwrap
 matplotlib.use('Agg')  # This line is necessary to prevent tkinter error in some environments
 
 
@@ -356,6 +358,62 @@ async def image(ctx, *, image_prompt):
         picture = discord.File(f)
         await ctx.send(file=picture)
 
+@bot.command()
+async def meme(ctx, *, quote):
+    print(f'Received meme command with quote: {quote}')
+
+    # Convert quote to uppercase
+    quote = quote.upper()
+
+    # Using GPT-3.5-turbo to get a description for the image from the quote
+    prompt = f"Generate a description for an image that fits this quote with no more than 25 words and only return the description: \"{quote}\""
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt},
+        ]
+    )
+    image_description = response['choices'][0]['message']['content']
+
+    # Generating an image from the description
+    image_response = generate_image(image_description)
+    image_url = image_response['data'][0]['url']
+    filename = generate_filename(os.getcwd())
+    save_image(image_url, filename)
+
+    # Open the image file with Pillow
+    img = Image.open(filename)
+    draw = ImageDraw.Draw(img)
+
+    # Specify font : The font 'impact.ttf' should be in your directory or you can use any other fonts.
+    font = ImageFont.truetype('impact.ttf', size=60)
+
+    # Wrapping the text
+    lines = textwrap.wrap(quote, width=40)  # change the width to your needs
+    y_text = 10
+    stroke_width = 2  # Define stroke width
+    stroke_fill = "black"  # Define stroke color
+    for line in lines:
+        line_width, line_height = font.getsize(line)
+        x = (img.width - line_width) / 2
+        # Draw the stroke
+        for adj in range(stroke_width):
+            draw.text((x-adj, y_text), line, font=font, fill=stroke_fill)
+            draw.text((x+adj, y_text), line, font=font, fill=stroke_fill)
+            draw.text((x, y_text-adj), line, font=font, fill=stroke_fill)
+            draw.text((x, y_text+adj), line, font=font, fill=stroke_fill)
+        # Draw the text
+        draw.text((x, y_text), line, font=font, fill="white")
+        y_text += line_height
+
+    # Save the edited image
+    img.save(filename)
+
+    # Send the meme to Discord
+    with open(filename, 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
 # Run the bot
 bot.run(DISCORD_BOT_TOKEN)
-
