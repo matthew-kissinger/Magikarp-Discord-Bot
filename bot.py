@@ -363,6 +363,7 @@ async def image(ctx, *, image_prompt):
         picture = discord.File(f)
         await ctx.send(file=picture)
 
+"""
 @bot.command()
 async def copypasta(ctx, *, topic: str = None):
     if not topic:
@@ -382,7 +383,7 @@ async def copypasta(ctx, *, topic: str = None):
 
     copypasta = response['choices'][0]['message']['content']
     await ctx.send(copypasta)
-
+"""
 
 
 @bot.command()
