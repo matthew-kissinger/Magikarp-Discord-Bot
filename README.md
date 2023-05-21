@@ -2,13 +2,19 @@
 
 Magikarp, the most powerful (and quirky) Discord bot you'll ever meet, powered by OpenAI API and some python magic.
 
+## Requirements
+- OpenAI API Key
+- Custom Google Search Engine
+- Python
+
 ## Features
 
 Magikarp has a wide array of functionalities, including:
 
 - Responding to questions in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.
 - Generating images based on prompts.
-- Fetching and analyzing data for specified stock symbols.
+- Fetching and analyzing data for specified stocks.
+- Fetching and analyzing data for specified crypto.
 - Delivering edgy, sarcastic insults.
 - Producing unique compliments.
 - Telling fortunes in a quirky and fun manner.
@@ -24,6 +30,7 @@ Magikarp has a wide array of functionalities, including:
 - `!compliment {@user}`: Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.
 - `!fortune`: The bot will tell your fortune in a quirky and fun manner.
 - `!meme {quote}`: The bot will create a meme with your quote in impact font.
+- `!crypto {crypto-name, crypto-symbol}`:
 
 ## Usage
 
