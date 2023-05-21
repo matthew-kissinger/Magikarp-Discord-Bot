@@ -30,7 +30,7 @@ Magikarp has a wide array of functionalities, including:
 - `!compliment {@user}`: Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.
 - `!fortune`: The bot will tell your fortune in a quirky and fun manner.
 - `!meme {quote}`: The bot will create a meme with your quote in impact font.
-- `!crypto {crypto-name, crypto-symbol}`:
+- `!crypto {crypto-name, crypto-symbol}`:The bot will fetch and analyze data for the specified cryptocurrency name and symbol.
 
 ## Usage
 
