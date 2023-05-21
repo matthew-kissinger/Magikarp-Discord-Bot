@@ -17,7 +17,7 @@ def generate_filename(crypto, base_filename):
     return filename
 
 def analyze_crypto_data(report_text, filename):
-    openai.api_key = "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"
+    openai.api_key = config.api_key
     system_prompt = (
         "You are CryptoAnalystGPT. You will be presented with the latest price data, historical price data, "
         "moving averages, historical volume data, news related to a cryptocurrency, and stock twits posts. You will use your analytical skills to "
