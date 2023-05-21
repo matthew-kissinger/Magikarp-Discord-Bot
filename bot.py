@@ -18,8 +18,9 @@ from newspaper import Article, ArticleException
 from requests.exceptions import HTTPError
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
-import asyncio
+from crypto import crypto_analyzer
 matplotlib.use('Agg')  # This line is necessary to prevent tkinter error in some environments
+
 
 
 # Initialize bot
@@ -30,10 +31,6 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Create a thread pool executor to use for running the long-running IO operations
 executor = ThreadPoolExecutor()
-
-async def download_image_async(image_url, filename):
-    loop = asyncio.get_event_loop()
-    await loop.run_in_executor(executor, save_image, image_url, filename)
 
 @bot.event
 async def on_ready():
@@ -229,6 +226,23 @@ def main(symbol):
 if __name__ == "__main__":
     executor = ThreadPoolExecutor()
 
+@bot.command()
+async def crypto(ctx, crypto_name: str, crypto_symbol: str):
+    print(f'Received crypto command with crypto_name: {crypto_name} and crypto_symbol: {crypto_symbol}')
+    crypto_id = crypto_name.lower()
+    crypto_symbol = crypto_symbol.upper()
+
+    # Call the crypto_analyzer() function
+    analysis_text, chart_filename = await bot.loop.run_in_executor(None, crypto_analyzer, crypto_name, crypto_id, crypto_symbol)
+
+    # Send the analysis text to Discord
+    await ctx.send(analysis_text)
+
+    # Send the chart image to Discord
+    with open(chart_filename, 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
 
 @bot.command()
 async def stock(ctx, symbol: str):
@@ -257,7 +271,6 @@ async def info(ctx):
     embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
     embed.add_field(name="!compliment {@user}", value="Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.", inline=False)
     embed.add_field(name="!fortune", value="The bot will tell your fortune in a quirky and fun manner.", inline=False)
-    embed.add_field(name="!meme {quote}", value="The bot will create a meme of your quote with impact font.", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -353,38 +366,15 @@ async def image(ctx, *, image_prompt):
     # Generate the filename
     filename = generate_filename(os.getcwd())
 
-    # Save the image to a local file, in a separate thread
-    await download_image_async(image_url, filename)
+    # Save the image to a local file
+    save_image(image_url, filename)
 
     print(f"Image saved as '{filename}'.")
-
+    
     # Send the image to Discord
     with open(filename, 'rb') as f:
         picture = discord.File(f)
         await ctx.send(file=picture)
-
-"""
-@bot.command()
-async def copypasta(ctx, *, topic: str = None):
-    if not topic:
-        copypasta_prompt = "Return a copypasta"
-    else:
-        copypasta_prompt = f"Return a copypasta about {topic}."
-
-    response = openai.ChatCompletion.create(
-        temperature=1.40,
-        max_tokens=1000,
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful bot that returns random copy pasta. Start the message with the beginning of the copypasta."},
-            {"role": "user", "content": copypasta_prompt},
-        ]
-    )
-
-    copypasta = response['choices'][0]['message']['content']
-    await ctx.send(copypasta)
-"""
-
 
 @bot.command()
 async def meme(ctx, *, quote):
@@ -394,11 +384,11 @@ async def meme(ctx, *, quote):
     quote = quote.upper()
 
     # Using GPT-3.5-turbo to get a description for the image from the quote
-    prompt = f"Generate a visual description for an image that fits this quote with no more than 25 words and only return the description: \"{quote}\""
+    prompt = f"Generate a description for an image that fits this quote with no more than 25 words and only return the description: \"{quote}\""
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a professional memelord. You will be given quotes and will generate a description for an image to put your quotes on."},
+            {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
         ]
     )
@@ -408,8 +398,7 @@ async def meme(ctx, *, quote):
     image_response = generate_image(image_description)
     image_url = image_response['data'][0]['url']
     filename = generate_filename(os.getcwd())
-    # Save the image to a local file, in a separate thread
-    await download_image_async(image_url, filename)
+    save_image(image_url, filename)
 
     # Open the image file with Pillow
     img = Image.open(filename)
@@ -430,11 +419,11 @@ async def meme(ctx, *, quote):
         font = ImageFont.truetype('impact.ttf', size=font_size)
 
         # Estimate the number of characters per line and the number of lines
-        chars_per_line = text_width // draw.textbbox((0, 0), 'A', font=font)[2]  # assuming 'A' is representative
+        chars_per_line = text_width // font.getsize('A')[0]  # assuming 'A' is representative
         lines = textwrap.wrap(quote, width=chars_per_line)
 
         # Check if the text height fits the image
-        text_height = len(lines) * draw.textbbox((0, 0), 'A', font=font)[3]  # assuming 'A' is representative
+        text_height = len(lines) * font.getsize('A')[1]  # assuming 'A' is representative
         if text_height < img_height * 0.9:  # 90% of the image height
             break
 
@@ -447,7 +436,7 @@ async def meme(ctx, *, quote):
     stroke_width = 2  # Define stroke width
     stroke_fill = "black"  # Define stroke color
     for line in lines:
-        line_width, line_height = draw.textbbox((0, 0), line, font=font)[2:4]
+        line_width, line_height = font.getsize(line)
         x = (img.width - line_width) / 2
         # Draw the stroke
         for adj in range(stroke_width):
@@ -466,7 +455,6 @@ async def meme(ctx, *, quote):
     with open(filename, 'rb') as f:
         picture = discord.File(f)
         await ctx.send(file=picture)
-
 
 # Run the bot
 bot.run(DISCORD_BOT_TOKEN)
