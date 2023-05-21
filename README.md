@@ -4,7 +4,7 @@ Magikarp, the most powerful (and quirky) Discord bot you'll ever meet, powered b
 
 ## Requirements
 - OpenAI API Key
-- Custom Google Search Engine
+- Custom Search JSON API
 - Python
 
 ## Features
