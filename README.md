@@ -26,7 +26,7 @@ cd Magikarp-Discord-Bot
 pip install -r requirements.txt
 ```
 
-2. Edit `config.py` to add your own OpenAI API key, Discord bot token, and Custom Search JSON API key:
+3. Edit `config.py` to add your own OpenAI API key, Discord bot token, and Custom Search JSON API key:
 
 ```python
 OPENAI_KEY = "your_openai_api_key_here"
@@ -35,13 +35,13 @@ api_key = "your_custom_search_json_api_key_here"
 cx = "your_custom_search_cx_here"
 ```
 
-3. Start the Magikarp bot by running:
+4. Start the Magikarp bot by running:
 
 ```
 python magikarp.py
 ```
 
-4. Once the Magikarp bot is connected to your server, try any of the available commands!
+5. Once the Magikarp bot is connected to your server, try any of the available commands!
 
 ## Commands
 
