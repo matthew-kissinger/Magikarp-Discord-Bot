@@ -1,88 +1,54 @@
 # Magikarp Discord Bot
 
-Magikarp, the most powerful (and quirky) Discord bot you'll ever meet, powered by OpenAI API and some python magic.
-
-## Requirements
-- OpenAI API Key
-- Custom Search JSON API*
-- Python
-
-*only required for !crypto command
+Magikarp is not your ordinary Discord bot. It's a intelligent bot that comes equipped with several useful features to add a touch of wit and wisdom to your server. Dive into the world of market analysis, creative expression, meme generation, and more with Magikarp!
 
 ## Features
 
-Magikarp has a wide array of functionalities, including:
-
-- Responding to questions in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.
-- Generating images based on prompts.
-- Fetching and analyzing data and news for specified stocks.
-- Fetching and analyzing data, news, and social media posts for specified crypto.
-- Delivering edgy, sarcastic insults.
-- Producing unique compliments.
-- Telling fortunes in a quirky and fun manner.
-- Making memes.
-
-## Commands
-
-- `!test`: Tests if the bot is responsive.
-- `!splash {question}`: Ask a question and the bot will respond in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.
-- `!image {image_prompt}`: The bot will generate an image based on the provided prompt.
-- `!stock {symbol}`: The bot will fetch and analyze data for the specified stock symbol.
-- `!insult {@user}`: Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.
-- `!compliment {@user}`: Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.
-- `!fortune`: The bot will tell your fortune in a quirky and fun manner.
-- `!meme {quote}`: The bot will create a meme with your quote in impact font.
-- `!crypto {crypto_name} {crypto_symbol}`:The bot will fetch and analyze data for the specified cryptocurrency name and symbol.
+- Stock and crypto analysis: Get detailed ratings and charts for stocks and cryptocurrencies.
+- Image and meme generation: Create unique images or memes from text prompts using GPT-3.
+- Compliments and insults: Dish out customized compliments or sarcastic (but not hurtful) insults to users.
+- Fortune telling: Magikarp will reveal your fortune in a quirky and entertaining way.
+- Conversation and commands: Engage in various conversations and execute commands using a witty text interface.
+- News and stock sentiment analysis: Gather news and StockTwits data on cryptocurrencies and stocks.
 
 ## Usage
 
-You can use Magikarp by inviting it to your server and typing `!<command>` in any text channel. You can replace `<command>` with any of the commands listed above.
+1. Install required Python libraries using:
 
-## Development
+```
+pip install -r requirements.txt
+```
 
-Magikarp was developed using Python and the discord.py library, with natural language processing powered by OpenAI's GPT-3.5-turbo. 
+2. Edit `config.py` to add your own OpenAI API key, Discord bot token, and Custom Search JSON API key:
 
-## Set Up Your Own Google Custom Search Engine
+```python
+OPENAI_KEY = "your_openai_api_key_here"
+DISCORD_BOT_TOKEN = "your_discord_bot_token_here"
+api_key = "your_custom_search_json_api_key_here"
+cx = "your_custom_search_cx_here"
+```
 
-In order to use this application, you will need to set up your own Google Custom Search Engine (CSE) and get a JSON API key. Here are the steps to do so:
+3. Start the Magikarp bot by running:
 
-### 1. Create a Google Custom Search Engine
+```
+python magikarp.py
+```
 
-First, visit [Google's Custom Search Engine](https://cse.google.com/cse/all) page and sign in with your Google account. Then, follow the steps to create a new search engine:
+4. Once the Magikarp bot is connected to your server, try any of the available commands!
 
-- Click on "New Search Engine".
-- In the "Sites to search" section, add the following sites:
-'''
-www.coindesk.com/*
-.cryptonews.com/
-.coinledger.io/
-.cointelegraph.com/
-.crypto.news/
-.nulltx.com/
-.todayonchain.com/
-news.google.com/*
-www.bbc.com/news/*
-www.cnn.com/*
-www.reuters.com/*
-www.bloomberg.com/*
-www.nytimes.com/*
-'''
-- Click on "Create".
+## Commands
 
-
-### 2. Get JSON API Key
-
-Next, visit [Google Cloud Console](https://console.cloud.google.com/) and create a new project. After the project is created, follow the steps below:
-
-- Navigate to "Credentials" under "APIs & Services".
-- Click "Create credentials" and select "API Key".
-- After the API Key is generated, restrict the key to the "Custom Search JSON API".
-- Click "Save".
-
-You now have your Google CSE ID and the API Key which can be used to integrate the custom search into your application.
-
-Please remember to keep your API key secret and do not expose it in any public repository or version control system as it could be misused.
-
+* `!test`: Tests if the bot is responsive.
+* `!splash {question}`: Asks a question, and the bot will respond in the style of cyber-punk discord bot trained on internet culture.
+* `!image {image_prompt}`: Generates an image based on the provided prompt.
+* `!stock {symbol}`: Fetches and analyzes data for the specified stock symbol.
+* `!insult {@user}`: Generates an edgy, sarcastic insult aimed at a specific user.
+* `!compliment {@user}`: Generates a unique compliment for a specific user.
+* `!fortune`: Tells your fortune in a quirky and fun manner.
+* `!crypto {crypto_name} {crypto_id} {crypto_symbol}`: Fetches and analyzes data for the specified cryptocurrency name, ID, and symbol.
+* `!meme {quote}`: Generates a meme image by passing a quote. The bot will create an image and add the quote to it.
+* `!meta`: Instructs the bot to generate a random command along with its corresponding input.
+* `!info`: Provides general information on the available bot commands.
 
 
 ## Contributing
