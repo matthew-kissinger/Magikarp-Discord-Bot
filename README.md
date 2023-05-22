@@ -15,8 +15,8 @@ Magikarp has a wide array of functionalities, including:
 
 - Responding to questions in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.
 - Generating images based on prompts.
-- Fetching and analyzing data for specified stocks.
-- Fetching and analyzing data for specified crypto.
+- Fetching and analyzing data and news for specified stocks.
+- Fetching and analyzing data, news, and social media posts for specified crypto.
 - Delivering edgy, sarcastic insults.
 - Producing unique compliments.
 - Telling fortunes in a quirky and fun manner.
