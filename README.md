@@ -5,7 +5,7 @@ Magikarp is not your ordinary Discord bot. It's a intelligent bot that comes equ
 ## Features
 
 - Stock and crypto analysis: Get detailed ratings and charts for stocks and cryptocurrencies.
-- Image and meme generation: Create unique images or memes from text prompts using GPT-3.
+- Image and meme generation: Create unique images or memes from text prompts using gpt-3.5-turbo.
 - Compliments and insults: Dish out customized compliments or sarcastic (but not hurtful) insults to users.
 - Fortune telling: Magikarp will reveal your fortune in a quirky and entertaining way.
 - Conversation and commands: Engage in various conversations and execute commands using a witty text interface.
