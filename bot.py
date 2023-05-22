@@ -262,7 +262,7 @@ async def stock(ctx, symbol: str):
 
 @bot.command()
 async def info(ctx):
-    embed = discord.Embed(title="Bot Commands Information", description="Here are the available commands: ", color=discord.Color.blue())
+    embed = discord.Embed(title="Bot Commands Information", description="Here are the available commands:", color=discord.Color.blue())
 
     embed.add_field(name="!test", value="Tests if the bot is responsive.", inline=False)
     embed.add_field(name="!splash {question}", value="Ask a question and the bot will respond in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.", inline=False)
@@ -271,8 +271,11 @@ async def info(ctx):
     embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
     embed.add_field(name="!compliment {@user}", value="Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.", inline=False)
     embed.add_field(name="!fortune", value="The bot will tell your fortune in a quirky and fun manner.", inline=False)
+    embed.add_field(name="!crypto {crypto_name} {crypto_symbol}", value="The bot will fetch and analyze data for the specified cryptocurrency name and symbol.", inline=False)
+    embed.add_field(name="!meme {quote}", value="Generate a meme image by passing a quote. The bot will create an image and add the quote to it.", inline=False)
 
     await ctx.send(embed=embed)
+
 
 
 @bot.command()
