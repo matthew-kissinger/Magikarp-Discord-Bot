@@ -38,7 +38,50 @@ You can use Magikarp by inviting it to your server and typing `!<command>` in an
 
 ## Development
 
-Magikarp was developed using Python and the discord.py library, with natural language processing powered by OpenAI's GPT-4. 
+Magikarp was developed using Python and the discord.py library, with natural language processing powered by OpenAI's GPT-3.5-turbo. 
+
+## Set Up Your Own Google Custom Search Engine
+
+In order to use this application, you will need to set up your own Google Custom Search Engine (CSE) and get a JSON API key. Here are the steps to do so:
+
+### 1. Create a Google Custom Search Engine
+
+First, visit [Google's Custom Search Engine](https://cse.google.com/cse/all) page and sign in with your Google account. Then, follow the steps to create a new search engine:
+
+- Click on "New Search Engine".
+- In the "Sites to search" section, add the following sites:
+'''
+www.coindesk.com/*
+.cryptonews.com/
+.coinledger.io/
+.cointelegraph.com/
+.crypto.news/
+.nulltx.com/
+.todayonchain.com/
+news.google.com/*
+www.bbc.com/news/*
+www.cnn.com/*
+www.reuters.com/*
+www.bloomberg.com/*
+www.nytimes.com/*
+'''
+- Click on "Create".
+
+
+### 3. Get JSON API Key
+
+Next, visit [Google Cloud Console](https://console.cloud.google.com/) and create a new project. After the project is created, follow the steps below:
+
+- Navigate to "Credentials" under "APIs & Services".
+- Click "Create credentials" and select "API Key".
+- After the API Key is generated, restrict the key to the "Custom Search JSON API".
+- Click "Save".
+
+You now have your Google CSE ID and the API Key which can be used to integrate the custom search into your application.
+
+Please remember to keep your API key secret and do not expose it in any public repository or version control system as it could be misused.
+
+
 
 ## Contributing
 
