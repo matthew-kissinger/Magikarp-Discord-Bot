@@ -13,7 +13,14 @@ Magikarp is not your ordinary Discord bot. It's a intelligent bot that comes equ
 
 ## Usage
 
-1. Install required Python libraries using:
+1. Clone the Repository an navigate to the project directory
+
+```
+git clone https://github.com/matthew-kissinger/Magikarp-Discord-Bot.git
+cd Magikarp-Discord-Bot
+```
+
+2. Install required Python libraries using:
 
 ```
 pip install -r requirements.txt
