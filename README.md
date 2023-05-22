@@ -68,7 +68,7 @@ www.nytimes.com/*
 - Click on "Create".
 
 
-### 3. Get JSON API Key
+### 2. Get JSON API Key
 
 Next, visit [Google Cloud Console](https://console.cloud.google.com/) and create a new project. After the project is created, follow the steps below:
 
