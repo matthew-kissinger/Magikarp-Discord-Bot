@@ -227,9 +227,12 @@ if __name__ == "__main__":
     executor = ThreadPoolExecutor()
 
 @bot.command()
-async def crypto(ctx, crypto_name: str, crypto_symbol: str):
-    print(f'Received crypto command with crypto_name: {crypto_name} and crypto_symbol: {crypto_symbol}')
-    crypto_id = crypto_name.lower()
+async def crypto(ctx, crypto_name: str, crypto_id: str, crypto_symbol: str):
+    print(f'Received crypto command with crypto_name: {crypto_name}, crypto_id: {crypto_id} and crypto_symbol: {crypto_symbol}')
+
+    # Format the strings appropriately
+    crypto_name = crypto_name.lower()
+    crypto_id = crypto_id.lower()
     crypto_symbol = crypto_symbol.upper()
 
     # Call the crypto_analyzer() function
@@ -271,7 +274,7 @@ async def info(ctx):
     embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
     embed.add_field(name="!compliment {@user}", value="Generate a unique compliment for a specific user. If no user is mentioned, the compliment will be for the command issuer.", inline=False)
     embed.add_field(name="!fortune", value="The bot will tell your fortune in a quirky and fun manner.", inline=False)
-    embed.add_field(name="!crypto {crypto_name} {crypto_symbol}", value="The bot will fetch and analyze data for the specified cryptocurrency name and symbol.", inline=False)
+    embed.add_field(name="!crypto {crypto_name} {crypto_id} {crypto_symbol}", value="The bot will fetch and analyze data for the specified cryptocurrency name, ID, and symbol.", inline=False)
     embed.add_field(name="!meme {quote}", value="Generate a meme image by passing a quote. The bot will create an image and add the quote to it.", inline=False)
 
     await ctx.send(embed=embed)
