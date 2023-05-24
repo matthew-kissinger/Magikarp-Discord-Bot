@@ -38,7 +38,7 @@ cx = "your_custom_search_cx_here"
 4. Start the Magikarp bot by running:
 
 ```
-python magikarp.py
+python main.py
 ```
 
 5. Once the Magikarp bot is connected to your server, try any of the available commands!
