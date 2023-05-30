@@ -20,7 +20,7 @@ async def info(ctx):
     embed = discord.Embed(title="Bot Commands Information", description="Here are the available commands:", color=discord.Color.blue())
 
     embed.add_field(name="!test", value="Tests if the bot is responsive.", inline=False)
-    embed.add_field(name="!splash {question}", value="Ask a question and the bot will respond in the style of Marvin the Paranoid Android from The Hitchhiker's Guide to the Galaxy.", inline=False)
+    embed.add_field(name="!splash {question}", value="Ask a question and the bot will respond.", inline=False)
     embed.add_field(name="!image {image_prompt}", value="The bot will generate an image based on the provided prompt.", inline=False)
     embed.add_field(name="!stock {symbol}", value="The bot will fetch and analyze data for the specified stock symbol.", inline=False)
     embed.add_field(name="!insult {@user}", value="Generate an edgy, sarcastic insult aimed at a specific user. If no user is mentioned, the insult will be aimed at the command issuer.", inline=False)
