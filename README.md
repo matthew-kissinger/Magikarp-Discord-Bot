@@ -56,6 +56,7 @@ python main.py
 * `!meme {quote}`: Generates a meme image by passing a quote. The bot will create an image and add the quote to it.
 * `!meta`: Instructs the bot to generate a random command along with its corresponding input.
 * `!info`: Provides general information on the available bot commands.
+* `!rpg "Castle" "a dragon is attacking the castle"`: Start a new RPG game. Provide a location and initial scenario. For example, !rpg 'Castle' 'a dragon is attacking the castle'. After starting a game with !rpg, the AI will provide a series of potential actions. Input one of these actions to continue the game. The AI will maintain a game state and generate a narrative based on your actions.
 
 
 ## Contributing
