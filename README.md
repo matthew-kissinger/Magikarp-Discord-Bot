@@ -10,6 +10,7 @@ Magikarp is not your ordinary Discord bot. It's a intelligent bot that comes equ
 - Fortune telling: Magikarp will reveal your fortune in a quirky and entertaining way.
 - Conversation and commands: Engage in various conversations and execute commands using a witty text interface.
 - News and stock sentiment analysis: Gather news and StockTwits data on cryptocurrencies and stocks.
+- Text-Based RPG Generator: Launch an immersive text-based RPG. Provide a location and an initial scenario, then interact with the game by choosing from a series of potential actions. The AI will maintain the game state and generate a narrative based on your actions.
 
 ## Usage
 
