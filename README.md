@@ -11,6 +11,7 @@ Magikarp is not your ordinary Discord bot. It's a intelligent bot that comes equ
 - Conversation and commands: Engage in various conversations and execute commands using a witty text interface.
 - News and stock sentiment analysis: Gather news and StockTwits data on cryptocurrencies and stocks.
 - Text-Based RPG Generator: Launch an immersive text-based RPG. Provide a location and an initial scenario, then interact with the game by choosing from a series of potential actions. The AI will maintain the game state and generate a narrative based on your actions.
+- AI-Powered Research: Use the AI to conduct in-depth research on a wide range of topics.
 
 ## Usage
 
@@ -57,7 +58,8 @@ python main.py
 * `!meme {quote}`: Generates a meme image by passing a quote. The bot will create an image and add the quote to it.
 * `!meta`: Instructs the bot to generate a random command along with its corresponding input.
 * `!info`: Provides general information on the available bot commands.
-* `!rpg "Castle" "a dragon is attacking the castle"`: Start a new RPG game. Provide a location and initial scenario. For example, !rpg 'Castle' 'a dragon is attacking the castle'. After starting a game with !rpg, the AI will provide a series of potential actions. Input one of these actions to continue the game. The AI will maintain a game state and generate a narrative based on your actions.
+* `!rpg {location} {scenario}`: Start a new RPG game. Provide a location and initial scenario. For example, !rpg 'Castle' 'a dragon is attacking the castle'. After starting a game with !rpg, the AI will provide a series of potential actions. Input one of these actions to continue the game. The AI will maintain a game state and generate a narrative based on your actions.
+* '!search {search_topic} {optional_number_of_rounds}: Conducts a thorough AI-powered search on the given topic. Number of rounds is optional and defaults to 2.'
 
 
 ## Contributing
