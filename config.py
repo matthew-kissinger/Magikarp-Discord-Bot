@@ -13,3 +13,7 @@ api_key = 'api-key-here'
 
 # Google customer search engine ID
 cx = 'id-here' 
+
+brave_search_api_key = "api-key-here"
+
+scraperapi_key = "api-key-here"
