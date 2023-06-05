@@ -59,7 +59,7 @@ python main.py
 * `!meta`: Instructs the bot to generate a random command along with its corresponding input.
 * `!info`: Provides general information on the available bot commands.
 * `!rpg {location} {scenario}`: Start a new RPG game. Provide a location and initial scenario. For example, !rpg 'Castle' 'a dragon is attacking the castle'. After starting a game with !rpg, the AI will provide a series of potential actions. Input one of these actions to continue the game. The AI will maintain a game state and generate a narrative based on your actions.
-* '!search {search_topic} {optional_number_of_rounds}: Conducts a thorough AI-powered search on the given topic. Number of rounds is optional and defaults to 2.'
+* '!search {search_topic} {optional_number_of_rounds}': Conducts a thorough AI-powered search on the given topic. Number of rounds is optional and defaults to 2.
 
 
 ## Contributing
