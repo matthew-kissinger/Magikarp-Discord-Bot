@@ -5,6 +5,7 @@ from discord_commands.crypto import crypto
 from discord_commands.stock import stock
 from discord_commands.image import image
 from discord_commands.meme import meme
+from discord_commands.searchai import search
 from config import DISCORD_BOT_TOKEN
 
 # Initialize bot
@@ -25,6 +26,7 @@ bot.add_command(meta)
 bot.add_command(image)
 bot.add_command(meme)
 bot.add_command(rpg)
+bot.add_command(search)
 
 @bot.event
 async def on_ready():
